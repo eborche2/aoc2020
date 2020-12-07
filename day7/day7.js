@@ -21,22 +21,15 @@ function countTier(tier, count, color_map) {
     let nextTier = [];
     for (let x=0;x<tier.length;x++) {
         let color = Object.keys(tier[x])[0];
-        for (const [key, value] of Object.entries(color_map)) {
-            if (key === color) {
-                for (let z=0;z<value.length;z++) {
-                    let color_check = Object.keys(value[z])[0];
-                    if (color_check === 'other bags.') {
-                        break;
-                    }
-                    let too_add = tier[x][color] * value[z][color_check];
-                    console.log(tier[x][color]);
-                    console.log(value[z][color_check]);
-                    console.log(too_add);
-                    count += too_add;
-                    console.log(count);
-                    nextTier.push({[color_check]: too_add});
-                }
+        let value = color_map[color]
+        for (let z=0;z<value.length;z++) {
+            let color_check = Object.keys(value[z])[0];
+            if (color_check === 'other bags.') {
+                break;
             }
+            let too_add = tier[x][color] * value[z][color_check];
+            count += too_add;
+            nextTier.push({[color_check]: too_add});
         }
     }
     return [nextTier, count];
@@ -80,7 +73,6 @@ fs.readFile('file.in', 'utf8' , (err, data) => {
         let result = countTier(tier, count, color_map);
         tier = result[0];
         count = result[1];
-        console.log(tier, count);
     }
     // part II
     console.log(count);
