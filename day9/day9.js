@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 function checkNumber(number, numberList) {
     for (let x=0;x<numberList.length;x++) {
         if (numberList.indexOf(number - numberList[x]) !== -1) {
@@ -65,5 +64,4 @@ fs.readFile('file.in', 'utf8' , (err, data) => {
         }
     }
     findRange(start -1 , badNumber, numberList);
-
 });
