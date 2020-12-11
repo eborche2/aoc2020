@@ -20,7 +20,7 @@ function countDifferences(joltages) {
     return [one, three, runs];
 }
 function figureMultiples(runs) {
-    let factors = [1, 1, 1, 2, 4, 7, 13];
+    let factors = [1, 1, 1, 2, 4, 7, 13]; //The ones are just buffers because I'm lazy.
     let multiple = factors[runs[0]];
     for (let x=1;x<runs.length;x++) {
         multiple *= factors[runs[x]];
